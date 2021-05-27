@@ -159,6 +159,9 @@ int startQuest(Player player) {
 		if (player.getLevel() > 2) {
 			std::cout << "(wcisnij 2): II\n";
 		}
+		if (player.getLevel() > 3) {
+			std::cout << "(wcisnij 3): III\n";
+		}
 		std::cout << "(wcisnij x): 'Wroc do wioski'. \n\n\n";
 		std::cout << "(Kolejne poziomy odblokuja sie po osiagnieciu odpowiednego levelu.) \n";
 		ch = _getch();
@@ -169,7 +172,13 @@ int startQuest(Player player) {
 		}
 		case '2': {
 			if (player.getLevel() > 2) {
-				return 2;
+				return 3;
+			}
+			break;
+		}
+		case '3': {
+			if (player.getLevel() > 3) {
+				return 6;
 			}
 			break;
 		}

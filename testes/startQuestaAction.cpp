@@ -27,7 +27,12 @@ void attackEnemy(Player& champion, Character enemy) {
 		}
 		else {
 			if (isFight) {
-				hpH = hpH - enemy.getDmg() + champion.getDef();
+				if (enemy.getDmg() < champion.getDef()) {
+					hp = hp;
+				}
+				else {
+					hpH = hpH - enemy.getDmg() + champion.getDef();
+				}
 			}
 			else {
 				break;
@@ -53,7 +58,12 @@ void attackOur(Player champion, Character& enemy) {
 		}
 		else {
 			if (isFight) {
-				hp = hp - champion.getDmg() + enemy.getDef();
+				if (champion.getDmg() < enemy.getDef()) {
+					hp = hp;
+				}
+				else {
+					hp = hp - champion.getDmg() + enemy.getDef();
+				}
 				std::string text = enemy.getName() + " hp " + std::to_string(hp) + "\n";
 				std::cout << text;
 			}
@@ -70,7 +80,7 @@ void attackOur(Player champion, Character& enemy) {
 	return;
 }
 
-int actionQuest(int lv, char(&map)[12][21], int yMap, int xMap, int y, int x, Player& player, Player& champion, std::vector <HeroCard>& eqHeroCard, std::vector <MapCard>& eqMapCard){
+int actionQuest(int lv, char(&map)[12][21], int yMap, int xMap, int y, int x, Player& player, Player& champion, std::vector <HeroCard>& eqHeroCard, std::vector <MapCard>& eqMapCard, std::vector <MapHeroCard>& eqMapHeroCard){
 	char a = map[y][x];
 	if (a == 'o') {
 		int x = champion.getHpMax() - champion.getHp();
@@ -117,7 +127,9 @@ int actionQuest(int lv, char(&map)[12][21], int yMap, int xMap, int y, int x, Pl
 			if (attE.joinable()) {
 				attE.join();
 			}
-			std::cout << "Umarles\n";
+			std::cout << "Umarles wcisnij X albo wyjdziesz z gry\n";
+			player.setExp(0-(player.getExp()/2));
+			player.setGold(player.getGold() / 4);
 			return 0;
 		}
 		else if (!isFight) {
@@ -127,7 +139,8 @@ int actionQuest(int lv, char(&map)[12][21], int yMap, int xMap, int y, int x, Pl
 			std::cout << "Pokonales przeciwnika\n";
 			std::vector <MapCard> allMapCard = giveMapCard();
 			std::vector <HeroCard> allHeroCard = giveHeroCard();
-			int box = (allMapCard.size() + allHeroCard.size())+2;
+			std::vector <MapHeroCard> allMapHeroCard = giveMapHeroCard();
+			int box = (allMapCard.size() + allHeroCard.size() + allMapHeroCard.size())+2;
 			ran = std::rand() % box + 1;
 			if (ran <= allMapCard.size()) {
 				std::cout << "\n\n Drop: " << allMapCard[ran - 1].nameCard << "\n\n";
@@ -136,6 +149,10 @@ int actionQuest(int lv, char(&map)[12][21], int yMap, int xMap, int y, int x, Pl
 			else if (ran <= allHeroCard.size() + allMapCard.size()) {
 				std::cout << "\n\n Drop: " << allHeroCard[ran - allMapCard.size() - 1].nameCard << "\n\n";
 				eqHeroCard.push_back(allHeroCard[ran - allMapCard.size() -1]);
+			}
+			else if (ran <= allHeroCard.size() + allMapCard.size() + allMapHeroCard.size()) {
+				std::cout << "\n\n Drop: " << allMapHeroCard[ran - allMapCard.size() - allHeroCard.size() - 1].nameCard << "\n\n";
+				eqMapHeroCard.push_back(allMapHeroCard[ran - allMapCard.size() - allHeroCard.size() - 1]);
 			}
 			std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 			champion.setHp(hpH);

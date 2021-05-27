@@ -34,10 +34,10 @@ void Character::setLevel(int i) {
 	level += i;
 }
 void Character::updateStatsLevel() {
-	hp = hp + hp*0.2*level;
+	hp = hp + hp*2*level;
 	hpMax = hp;
-	dmg = dmg + 1.5*level;
-	as = as + level;
+	dmg = dmg + 1.79*level;
+	as = as + 2*level;
 }
 void Character::setHpMax(int i) {
 	hpMax = i;
@@ -97,11 +97,11 @@ void Player::setLevel(int i) {
 }
 void Player::updateStatsLevel() {
 	maxExp = 15 * getLevel() + 4 * getLevel() * getLevel();
-	hpBasic = hpBasic + hpBasic * 0.1 * getLevel();
+	hpBasic = hpBasic + hpBasic * 0.07 * getLevel();
 	setHpMaxByBuff(hpBuff);
-	setDmg(getDmg() + 1.5 * getLevel());
+	setDmg(getDmg() + 1.1 * getLevel());
 	setDmgByBuff(dmgBuff);
-	setAs(getAs() + 3 * getLevel());
+	setAs(getAs() + 1 * getLevel());
 	setAsByBuff(asBuff);
 }
 void Player::setExp(int i) {

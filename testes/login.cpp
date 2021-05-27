@@ -166,12 +166,12 @@ void registration() {
 		std::cout << "error: " << error;
 	}
 	if (champ == 1) {
-		query = "insert into player VALUES(" + std::to_string(key) + "," + std::to_string(1) + "," + std::to_string(50) + "," + std::to_string(3) + ","
+		query = "insert into player VALUES(" + std::to_string(key) + "," + std::to_string(1) + "," + std::to_string(50) + "," + std::to_string(5) + ","
 			+ std::to_string(70) + "," + std::to_string(1) + "," + std::to_string(1) + ", 'Bjorn Zelaznoboki'," + std::to_string(0) + "," + std::to_string(0) + ","
 			+ std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(100)+")";
 	}
 	else {
-		query = "insert into player VALUES(" + std::to_string(key) + "," + std::to_string(1) + "," + std::to_string(50) + "," + std::to_string(3) + ","
+		query = "insert into player VALUES(" + std::to_string(key) + "," + std::to_string(1) + "," + std::to_string(50) + "," + std::to_string(5) + ","
 			+ std::to_string(70) + "," + std::to_string(1) + "," + std::to_string(1) + ", 'Sasuke Uchiha'," + std::to_string(0) + "," + std::to_string(0) + ","
 			+ std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(0) + "," + std::to_string(100) + ")";
 	}

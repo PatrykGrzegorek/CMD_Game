@@ -31,7 +31,7 @@ int main() {
 		case 2: {
 			registration();
 			system("cls");
-			printf("Rejestracja pomyslna.\n\n");
+			printf("Rejestracja zakonczona.\n\n");
 			menu = false;
 			runGame = false;
 			break;

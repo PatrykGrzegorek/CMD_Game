@@ -26,20 +26,33 @@ struct MapCard : public Card {
 
 	}
 };
+
+struct MapHeroCard : public Card {
+	int valueAction;
+	std::string nameEnemy;
+	MapHeroCard() : Card(), valueAction(0), nameEnemy("")  {};
+	MapHeroCard(int _id, std::string _name, int _value, std::string _nameE) : Card(_id, _name), valueAction(_value), nameEnemy(_nameE) {
+
+	}
+};
+
 void useMapCard(int, char&);
 void useHeroCard(int, Player&, Player&);
+void useMapHeroCard(int, Player&, Player&, char&, char(&map)[12][21], int, int);
 std::vector <HeroCard> giveHeroCard();
 std::vector <MapCard> giveMapCard();
+std::vector <MapHeroCard> giveMapHeroCard();
 
 
-int actionQuest(int, char(&map)[12][21], int, int, int, int, Player&, Player&, std::vector <HeroCard>&, std::vector <MapCard>&);
+
+int actionQuest(int, char(&map)[12][21], int, int, int, int, Player &, Player &, std::vector <HeroCard>&, std::vector <MapCard>&, std::vector <MapHeroCard>&);
 void displayArea(Player, Character);
 void attackEnemy(Player&, Character);
 void attackOur(Player, Character&);
 
 
-void openInventory(std::vector <HeroCard>&, std::vector <MapCard>&, char&, Player&, Player&);
+void openInventory(std::vector <HeroCard>&, std::vector <MapCard>&, std::vector <MapHeroCard>&, char&, Player&, Player&, char(&map)[12][21], int, int);
 void loadQuestMap(int lv, char(&map)[12][21], int, int);
 void showQuestMap(char(&map)[12][21], int, int, int, int, Player, Player);
-void moveQuest(char(&map)[12][21], int, int, int&, int&, char&, char&, Player&, Player&, int, int&, std::vector <HeroCard>&, std::vector <MapCard>&);
+void moveQuest(char(&map)[12][21], int, int, int&, int&, char&, char&, Player&, Player&, int, int&, std::vector <HeroCard>&, std::vector <MapCard>&, std::vector <MapHeroCard>&);
 void startQuest(Player&, Player, int);
