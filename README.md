@@ -72,8 +72,8 @@ file moveSetStarterMap.cpp / method startQuest() <br/>
 Inplementation.<br/>
 ![image](https://user-images.githubusercontent.com/51320419/119913507-60fdaa00-bf5e-11eb-972b-81c95abc8bf3.png)<br/>
 ![image](https://user-images.githubusercontent.com/51320419/119914346-34e32880-bf60-11eb-9a5e-e06acad2bce4.png)<br/>
-###### map.txt is a village file.<br/>
 Return returns the level of the map. You specify the map level in the map name.<br/>
+###### map.txt is a village file.<br/>
 ![image](https://user-images.githubusercontent.com/51320419/119914538-a4f1ae80-bf60-11eb-9665-c2d60c2590bb.png)
 ### Development restrictions
 Each opponent must have a different first letter of their name. The name must be capitalized.<br/>
